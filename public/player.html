@@ -4,36 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Player</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: black; /* Optional, for better viewing experience /
-      }
-
-      #videoPlayer {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover; / Ensures the video fills the screen while maintaining aspect ratio */
-      }
-
-      #h1hologram {
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body id="bodyhologram">
     <h1 id="h1hologram">Video Player</h1>
-    <video id="videoPlayer" controls autoplay playsinline>
-      <source id="videoSource" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <div id="videoContainer">
+      <video id="videoPlayer" controls autoplay playsinline loop>
+        <source id="videoSource" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
@@ -52,6 +33,26 @@
       // Ensure video plays with sound
       videoPlayer.addEventListener("play", () => {
         videoPlayer.muted = false;
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const videoPlayer = document.getElementById('videoPlayer');
+        videoPlayer.style.display = 'block'; // Ensure the video is visible
+
+        function adjustVideoOrientation() {
+          if (window.innerWidth < window.innerHeight) {
+            videoPlayer.style.width = '100vh';
+            videoPlayer.style.height = '100vw';
+            videoPlayer.style.transform = 'rotate(90deg)';
+          } else {
+            videoPlayer.style.width = '100vw';
+            videoPlayer.style.height = '100vh';
+            videoPlayer.style.transform = 'rotate(0deg)';
+          }
+        }
+
+        adjustVideoOrientation();
+        window.addEventListener('resize', adjustVideoOrientation);
       });
     </script>
   </body>

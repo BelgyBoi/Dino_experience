@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
 html,
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Optional, for better viewing experience */
   overflow: hidden;
-  /* Prevent scrolling */
 }
 
 .configurator {
@@ -67,10 +70,28 @@ div.configurator-header {
   padding: 5% 0%;
 }
 
-#videoPlayer {
-  display: none;
-  /* Initially hide the video */
+#videoContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+#videoPlayer {
+  width: 100vh; /* Swap width and height */
+  height: 100vw;
+  transform: rotate(90deg); /* Rotate video */
+  object-fit: cover; /* Ensures the video fills the screen while maintaining aspect ratio */
+}
+
+#h1hologram {
+  display: none;
+}
+
+
+
 
 /* #control_btns {
   display: flex;
