@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Panel</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Panel</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
+  <section class="configurator">
+    <div class="configurator-header">
+      <img src="../assets/museum_logo.svg" alt="logo" class="icon">
+      <h1>Tyrannosaurus rex</h1>
+      <a href="#"><img class="icon" src="../assets/I_icon.svg" alt="info-icon"></a>
+    </div>
+    <div class="dino-selector">
+      <img class="dino" src="../assets/rex.png" alt="Dino-selected">
+    </div>
     <div id="control_btns">
-        <button onclick="sendPlayCommand('#')">
-          <img src="../assets/rawr_icon.svg" alt="rawr">
-        </button>
-        <button onclick="sendPlayCommand('#')">
-          <img src="../assets/scratch_icon.svg" alt="scratch">
-        </button>
-        <button onclick="sendPlayCommand('#')">
-          <img src="../assets/eat_icon.svg" alt="eat">
-        </button>
-        <button onclick="sendPlayCommand('#')">
-          <img src="../assets/walky_icon.svg" alt="walk">
-      </div>
-      <script src="/socket.io/socket.io.js"></script>
-      <script>
-        const socket = io();
-    
-        function sendPlayCommand(videoId) {
-          socket.emit('playVideo', videoId);
-        }
-      </script>
+      <button class="btn" onclick="sendPlayCommand('#')">
+        <img src="/assets/rawr_icon.svg" alt="rawr">
+      </button>
+      <button class="btn" onclick="sendPlayCommand('#')">
+        <img src="../assets/scratch_icon.svg" alt="scratch">
+      </button>
+      <button class="btn" onclick="sendPlayCommand('#')">
+        <img src="../assets/eat_icon.svg" alt="eat">
+      </button>
+      <button class="btn" onclick="sendPlayCommand('#')">
+        <img src="../assets/walky_icon.svg" alt="walk">
+      </button>
+    </div>
+  </section>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    function sendPlayCommand(videoId) {
+      socket.emit('playVideo', videoId);
+    }
+  </script>
 </body>
+
 </html>

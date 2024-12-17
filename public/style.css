@@ -1,0 +1,94 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+
+
+.configurator {
+  width: auto;
+  padding: 10% 20%; /* Add padding to top and bottom */
+  max-height: 100vh; /* Ensure it does not exceed viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  overflow: auto; /* Allow internal scrolling if content overflows */
+  background-image: url('../assets/background_image.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.configurator-header {
+  width: 100%;
+}
+
+.configurator-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-radius: 24px;
+  padding: 24px 0px;
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
+}
+
+.configurator-header h1 {
+  font-size: 1.5rem;
+  color: black;
+  margin: 0;
+}
+
+.dino-selector {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dino {
+  width: 30%;
+  height: auto;
+  padding: 5% 0%;
+}
+
+#videoPlayer {
+  display: none;
+  /* Initially hide the video */
+}
+
+#control_btns {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
+  padding: 24px 0px;
+  width: 100%;
+  
+}
+
+button.btn {
+  border-radius: 16px;
+  border: none;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn img {
+  padding: 10px 20px;
+  height: auto;
+  width: 100%;
+}
