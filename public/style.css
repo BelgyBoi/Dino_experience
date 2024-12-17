@@ -9,8 +9,8 @@ html, body {
 
 .configurator {
   width: auto;
-  padding: 10% 20%; /* Add padding to top and bottom */
-  max-height: 100vh; /* Ensure it does not exceed viewport height */
+  padding: 0% 20%; /* Add padding to top and bottom */
+  height: 100vh; /* Ensure it does not exceed viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +37,7 @@ div.configurator-header {
   width: 100%;
   align-items: center;
   border-radius: 24px;
-  padding: 24px 0px;
+  padding: 24px ;
   background: rgba(255, 255, 255, 0.60);
   box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
 }
@@ -73,7 +73,7 @@ div.configurator-header {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.60);
   box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
-  padding: 24px 0px;
+  padding: 24px;
   width: 100%;
   
 }
@@ -85,6 +85,8 @@ button.btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: flex;
+  flex-direction: column;
 }
 
 .btn img {
