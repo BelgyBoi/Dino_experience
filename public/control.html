@@ -1,62 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control Panel</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="configurator">
+      <div class="configurator-header">
+        <img src="assets/museum_logo.svg" alt="logo" class="icon" />
+        <h1>Tyrannosaurus rex</h1>
+        <a href="#" onclick="showOverlay()"><img class="icon" src="assets/I_icon.svg" alt="info-icon"></a>
+      </div>
+      <div class="dino-selector">
+        <img class="dino" src="assets/rex.png" alt="Dino-selected" />
+      </div>
+      <div class="arrows">
+        <button class="arrow-btn" onclick="navigateDino('left')">
+          <img src="assets/arrow-left.svg" alt="left arrow" />
+        </button>
+        <button class="arrow-btn" onclick="navigateDino('right')">
+          <img src="assets/arrow-right.svg" alt="right arrow" />
+        </button>
+      </div>
+      <div id="control_btns">
+        <div class="btn-container">
+          <button class="btn" onclick="sendPlayCommand('roar', this)">
+            <img src="assets/rawr_icon.svg" alt="rawr" />
+          </button>
+          <div class="btn-title">Roar</div>
+        </div>
+        <div class="btn-container">
+          <button class="btn" onclick="sendPlayCommand('#', this)">
+            <img src="assets/scratch_icon.svg" alt="scratch" />
+          </button>
+          <div class="btn-title">Scratch</div>
+        </div>
+        <div class="btn-container">
+          <button class="btn" onclick="sendPlayCommand('#', this)">
+            <img src="assets/eat_icon.svg" alt="eat" />
+          </button>
+          <div class="btn-title">Eat</div>
+        </div>
+        <div class="btn-container">
+          <button class="btn" onclick="sendPlayCommand('#', this)">
+            <img src="assets/walky_icon.svg" alt="walk" />
+          </button>
+          <div class="btn-title">Walk</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Control Panel</title>
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="style.css">
+      function sendPlayCommand(videoId, button) {
+        // Remove active state from all buttons
+        const buttons = document.querySelectorAll("#control_btns .btn");
+        buttons.forEach((btn) => btn.classList.remove("active"));
 
-</head>
+        // Add active state to the clicked button
+        button.classList.add("active");
 
-<body>
-  <section class="configurator">
-    <div class="configurator-header">
-      <img src="../assets/museum_logo.svg" alt="logo" class="icon">
-      <h1>Tyrannosaurus rex</h1>
-      <a href="#"><img class="icon" src="../assets/I_icon.svg" alt="info-icon"></a>
-    </div>
-    <div class="dino-selector">
-      <img class="dino" src="../assets/rex.png" alt="Dino-selected">
-    </div>
-    <div class="arrows">
-      <button class="arrow-btn" onclick="navigateDino('left')">
-        <img src="../assets/arrow-right.svg" alt="left arrow">
-      </button>
-      <button class="arrow-btn" onclick="navigateDino('right')">
-        <img src="../assets/arrow-left.svg" alt="right arrow">
-      </button>
-      <script>
-        function navigateDino(direction) {
-          socket.emit('navigateDino', direction);
-        }
-      </script>
-    </div>
-    <div id="control_btns">
-      <button class="btn" onclick="sendPlayCommand('roar')">
-        <img src="/assets/rawr_icon.svg" alt="rawr">
-        roar
-      </button>
-      <button class="btn" onclick="sendPlayCommand('#')">
-        <img src="../assets/scratch_icon.svg" alt="scratch">
-      </button>
-      <button class="btn" onclick="sendPlayCommand('#')">
-        <img src="../assets/eat_icon.svg" alt="eat">
-      </button>
-      <button class="btn" onclick="sendPlayCommand('#')">
-        <img src="../assets/walky_icon.svg" alt="walk">
-      </button>
-    </div>
-  </section>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
+        // Emit the playVideo event
+        socket.emit("playVideo", videoId);
+      }
 
-    function sendPlayCommand(videoId) {
-      socket.emit('playVideo', videoId);
-    }
-  </script>
-</body>
+      function navigateDino(direction) {
+        socket.emit("navigateDino", direction);
+      }
 
+      function showOverlay() {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "block";
+        setTimeout(() => {
+          overlay.style.opacity = "1";
+        }, 10); // slight delay to ensure transition
+      }
+
+      function hideOverlay() {
+        const overlay = document.getElementById("overlay");
+        overlay.style.opacity = "0";
+        setTimeout(() => {
+          overlay.style.display = "none";
+        }, 500); // match the transition duration
+      }
+    </script>
+  </body>
 </html>
