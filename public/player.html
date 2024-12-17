@@ -21,7 +21,7 @@
       const videoSource = document.getElementById('videoSource');
   
       socket.on('playVideo', (videoId) => {
-        videoSource.src = '/videos/' + videoId + '.mp4'; // Set the video source
+        videoSource.src = '/assets/' + videoId + '.mp4'; // Set the video source
         videoPlayer.load(); // Load the video
         videoPlayer.style.display = 'block'; // Display the video
         videoPlayer.play().catch(function(error) {
