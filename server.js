@@ -12,6 +12,17 @@ app.use(express.static('public'));
 // Serve video files from the videos directory
 app.use('/videos', express.static('videos'));
 
+// Serve assets files from the assets directory
+app.use('/assets', express.static('assets'));
+
+// Ensure correct MIME type for CSS
+app.use((req, res, next) => {
+  if (req.url.endsWith('.css')) {
+    res.header('Content-Type', 'text/css');
+  }
+  next();
+});
+
 io.on('connection', (socket) => {
   console.log('New client connected');
 

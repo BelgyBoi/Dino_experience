@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Panel</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div id="control_btns">
-        <button onclick="sendPlayCommand('Chinese_Beaver_With_Original_Cantonese')">Play Chinese Beaver</button>
-        <button onclick="sendPlayCommand('Chinese_Beaver_With_English_Dub')">Play English Dub</button>
-        <button onclick="sendPlayCommand('Chinese_Beaver_With_English_Sub')">Play English Sub</button>
-        <button onclick="sendPlayCommand('Chinese_Beaver_With_French_Sub')">Play French
+        <button onclick="sendPlayCommand('#')">
+          <img src="../assets/rawr_icon.svg" alt="rawr">
+        </button>
+        <button onclick="sendPlayCommand('#')">
+          <img src="../assets/scratch_icon.svg" alt="scratch">
+        </button>
+        <button onclick="sendPlayCommand('#')">
+          <img src="../assets/eat_icon.svg" alt="eat">
+        </button>
+        <button onclick="sendPlayCommand('#')">
+          <img src="../assets/walky_icon.svg" alt="walk">
       </div>
       <script src="/socket.io/socket.io.js"></script>
       <script>
