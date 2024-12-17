@@ -1,23 +1,19 @@
 # Dino_experience
-when downloading the code for this project make sure to install these packages.
-Navigate to the Project Directory:
-Open Command Prompt and navigate to your new project directory:
+When downloading the code for this project, follow these steps to set it up.
+
+Navigate to the Project Directory
+Open Command Prompt and navigate to your project directory:
 
 sh
-cd "C:\Users\tibok\OneDrive\Documenten\dino_experience"
+cd "<YOUR DIRECTORY>\dino_experience"
 
 
 
-Initialize a New Node.jsProject:
-Run the following command to initialize a new Node.jsproject:
-
-sh
-npm init -y
-
-
-
-Install Express and Socket.IO:
-Install the required packages by running:
+Install Dependencies
+Run the following command to install all required packages:
 
 sh
-npm install express socket.io
+npm install
+
+
+This command installs all dependencies listed in your package.json file, including express and socket.io.

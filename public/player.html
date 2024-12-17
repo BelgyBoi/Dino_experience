@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        #videoPlayer {
+          display: none; /* Initially hide the video */
+        }
+      </style>
+</head>
+<body>
+    <h1>Video Player</h1>
+    <video id="videoPlayer" width="600" controls autoplay playsinline>
+      <source id="videoSource" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoSource = document.getElementById('videoSource');
+  
+      socket.on('playVideo', (videoId) => {
+        videoSource.src = '/videos/' + videoId + '.mp4'; // Set the video source
+        videoPlayer.load(); // Load the video
+        videoPlayer.style.display = 'block'; // Display the video
+        videoPlayer.play().catch(function(error) {
+          console.error('Error playing video:', error);
+        });
+      });
+  
+      // Ensure video plays with sound
+      videoPlayer.addEventListener('play', () => {
+        videoPlayer.muted = false;
+      });
+    </script>
+</body>
+</html>
