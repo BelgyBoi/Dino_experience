@@ -69,25 +69,7 @@
         socket.emit("playVideo", videoId);
       }
 
-      function navigateDino(direction) {
-        socket.emit("navigateDino", direction);
-      }
 
-      function showOverlay() {
-        const overlay = document.getElementById("overlay");
-        overlay.style.display = "block";
-        setTimeout(() => {
-          overlay.style.opacity = "1";
-        }, 10); // slight delay to ensure transition
-      }
-
-      function hideOverlay() {
-        const overlay = document.getElementById("overlay");
-        overlay.style.opacity = "0";
-        setTimeout(() => {
-          overlay.style.display = "none";
-        }, 500); // match the transition duration
-      }
     </script>
   </body>
 </html>

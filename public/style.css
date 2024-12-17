@@ -106,7 +106,7 @@ div.configurator-header {
 .btn-title {
   margin-top: 5px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 600;
   color: black;
 }
 
@@ -149,10 +149,10 @@ button.btn:active img {
 
 .arrows {
   display: flex;
-  width: 60%;
-  flex-direction: row-reverse;
+  width: 64%;
+  flex-direction: row;
   position: absolute;
-  left: 20%;
+  left: 18%;
   align-items: center;
   justify-content: space-between;
 }
