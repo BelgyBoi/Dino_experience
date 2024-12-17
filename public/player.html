@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Player</title>
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black; /* Optional, for better viewing experience /
+      }
 
-      </style>
-</head>
-<body>
-    <h1>Video Player</h1>
-    <video id="videoPlayer" width="600" controls autoplay playsinline>
-      <source id="videoSource" type="video/mp4">
+      #videoPlayer {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover; / Ensures the video fills the screen while maintaining aspect ratio */
+      }
+
+      #h1hologram {
+        display: none;
+      }
+    </style>
+  </head>
+  <body id="bodyhologram">
+    <h1 id="h1hologram">Video Player</h1>
+    <video id="videoPlayer" controls autoplay playsinline>
+      <source id="videoSource" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
-      const videoPlayer = document.getElementById('videoPlayer');
-      const videoSource = document.getElementById('videoSource');
-  
-      socket.on('playVideo', (videoId) => {
-        videoSource.src = '/assets/' + videoId + '.mp4'; // Set the video source
+      const videoPlayer = document.getElementById("videoPlayer");
+      const videoSource = document.getElementById("videoSource");
+
+      socket.on("playVideo", (videoId) => {
+        videoSource.src = "/assets/" + videoId + ".mp4"; // Set the video source
         videoPlayer.load(); // Load the video
-        videoPlayer.style.display = 'block'; // Display the video
-        videoPlayer.play().catch(function(error) {
-          console.error('Error playing video:', error);
+        videoPlayer.style.display = "block"; // Display the video
+        videoPlayer.play().catch(function (error) {
+          console.error("Error playing video:", error);
         });
       });
-  
+
       // Ensure video plays with sound
-      videoPlayer.addEventListener('play', () => {
+      videoPlayer.addEventListener("play", () => {
         videoPlayer.muted = false;
       });
     </script>
-</body>
+  </body>
 </html>

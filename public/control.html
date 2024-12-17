@@ -20,6 +20,19 @@
     <div class="dino-selector">
       <img class="dino" src="../assets/rex.png" alt="Dino-selected">
     </div>
+    <div class="arrows">
+      <button class="arrow-btn" onclick="navigateDino('left')">
+        <img src="../assets/arrow-right.svg" alt="left arrow">
+      </button>
+      <button class="arrow-btn" onclick="navigateDino('right')">
+        <img src="../assets/arrow-left.svg" alt="right arrow">
+      </button>
+      <script>
+        function navigateDino(direction) {
+          socket.emit('navigateDino', direction);
+        }
+      </script>
+    </div>
     <div id="control_btns">
       <button class="btn" onclick="sendPlayCommand('roar')">
         <img src="/assets/rawr_icon.svg" alt="rawr">

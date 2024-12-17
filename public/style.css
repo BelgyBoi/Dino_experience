@@ -1,22 +1,28 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
+  overflow: hidden;
+  /* Prevent scrolling */
 }
 
 
 
 .configurator {
   width: auto;
-  padding: 0% 20%; /* Add padding to top and bottom */
-  height: 100vh; /* Ensure it does not exceed viewport height */
+  padding: 0% 20%;
+  /* Add padding to top and bottom */
+  height: 100vh;
+  /* Ensure it does not exceed viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
-  overflow: auto; /* Allow internal scrolling if content overflows */
+  box-sizing: border-box;
+  /* Ensure padding is included in the element's total width and height */
+  overflow: auto;
+  /* Allow internal scrolling if content overflows */
   background-image: url('../assets/background_image.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -37,7 +43,7 @@ div.configurator-header {
   width: 100%;
   align-items: center;
   border-radius: 24px;
-  padding: 24px ;
+  padding: 24px;
   background: rgba(255, 255, 255, 0.60);
   box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
 }
@@ -75,7 +81,7 @@ div.configurator-header {
   box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
   padding: 24px;
   width: 100%;
-  
+
 }
 
 button.btn {
@@ -93,4 +99,29 @@ button.btn {
   padding: 10px 20px;
   height: auto;
   width: 100%;
+}
+.arrows{
+  display: flex;
+  width: 60%;
+  flex-direction: row-reverse;
+  position:absolute;
+  left: 20%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow-btn {
+  display: flex;
+  width: 59.827px;
+  height: 60px;
+  padding: 19px 11px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 4px 6px 20.3px 5px rgba(0, 0, 0, 0.92);
+  border: none;
 }
